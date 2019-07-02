@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9834bd2c0e6e9b92637612393e335be3",
+    "content-hash": "4734d379b389ed75f0f72cfa0991647b",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -688,16 +688,16 @@
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
-            "version": "v2.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineMigrationsBundle.git",
-                "reference": "4c9579e0e43df1fb3f0ca29b9c20871c824fac71"
+                "reference": "2fa7e62798bfe233399f3d8f677a8bb2e81d4180"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/4c9579e0e43df1fb3f0ca29b9c20871c824fac71",
-                "reference": "4c9579e0e43df1fb3f0ca29b9c20871c824fac71",
+                "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/2fa7e62798bfe233399f3d8f677a8bb2e81d4180",
+                "reference": "2fa7e62798bfe233399f3d8f677a8bb2e81d4180",
                 "shasum": ""
             },
             "require": {
@@ -722,7 +722,10 @@
             "autoload": {
                 "psr-4": {
                     "Doctrine\\Bundle\\MigrationsBundle\\": ""
-                }
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -749,7 +752,7 @@
                 "migrations",
                 "schema"
             ],
-            "time": "2019-01-09T18:49:50+00:00"
+            "time": "2019-05-24T18:14:57+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -1010,16 +1013,16 @@
         },
         {
             "name": "doctrine/migrations",
-            "version": "v2.1.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "ebe6f891a4c61574f77fc4a06d913d29236b8466"
+                "reference": "0069f40df5d7fbe54c32f03843bb36a1c7123bc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/ebe6f891a4c61574f77fc4a06d913d29236b8466",
-                "reference": "ebe6f891a4c61574f77fc4a06d913d29236b8466",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/0069f40df5d7fbe54c32f03843bb36a1c7123bc9",
+                "reference": "0069f40df5d7fbe54c32f03843bb36a1c7123bc9",
                 "shasum": ""
             },
             "require": {
@@ -1054,7 +1057,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1.x-dev"
+                    "dev-master": "2.2.x-dev"
                 }
             },
             "autoload": {
@@ -1088,7 +1091,7 @@
                 "migrations",
                 "php"
             ],
-            "time": "2019-06-06T15:47:41+00:00"
+            "time": "2019-06-06T16:09:57+00:00"
         },
         {
             "name": "doctrine/orm",
@@ -6734,7 +6737,9 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "doctrine/doctrine-fixtures-bundle": 20,
-        "doctrine/data-fixtures": 20
+        "doctrine/data-fixtures": 20,
+        "doctrine/doctrine-migrations-bundle": 20,
+        "doctrine/migrations": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

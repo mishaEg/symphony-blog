@@ -4,11 +4,12 @@
 namespace App\Blogger\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="blog")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\HasLifecycleCallbacks()
+ * @ORM\Entity(repositoryClass="App\Blogger\BlogBundle\Entity\Repository\BlogRepository")
  */
 class Blog
 {
@@ -44,15 +45,18 @@ class Blog
      */
     protected $tags;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
+     */
     protected $comments;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string")
      */
     protected $created;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string")
      */
     protected $updated;
 
@@ -107,9 +111,12 @@ class Blog
     /**
      * @return mixed
      */
-    public function getBlog()
+    public function getBlog($length = null)
     {
-        return $this->blog;
+        if (false === is_null($length) && $length > 0)
+            return substr($this->blog, 0, $length);
+        else
+            return $this->blog;
     }
 
     /**
@@ -202,6 +209,8 @@ class Blog
 
     public function __construct()
     {
+        $this->comments = new ArrayCollection();
+
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
     }
@@ -212,5 +221,10 @@ class Blog
     public function setUpdatedValue()
     {
         $this->setUpdated(new \DateTime());
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 }

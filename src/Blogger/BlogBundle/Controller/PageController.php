@@ -20,7 +20,15 @@ class PageController extends AbstractController
 
     public function indexAction()
     {
-        return $this->render('@BloggerBlog/Page/index.html.twig');
+        $em = $this->getDoctrine()
+            ->getManager();
+
+        $blogs = $em->getRepository('BloggerBlogBundle:Blog')
+            ->getLatestBlogs();
+
+        return $this->render('@BloggerBlog/Page/index.html.twig', array(
+            'blogs' => $blogs
+        ));
     }
 
     public function aboutAction()
