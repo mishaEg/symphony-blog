@@ -33,3 +33,7 @@ BloggerBlogBundle_comment_create:
   requirements:
     methods:  POST
     blog_id: \d+
+
+api:
+  type: rest
+  resource: "routing_api.yaml"

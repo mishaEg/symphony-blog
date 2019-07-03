@@ -7,7 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BlogController extends AbstractController
 {
-
     public function showAction($id, $slug)
     {
         $em = $this->getDoctrine()->getManager();
@@ -26,5 +25,4 @@ class BlogController extends AbstractController
             'comments'  => $comments
         ));
     }
-
 }

@@ -17,6 +17,7 @@ class CommentType extends AbstractType
     {
         $builder->add('user');
         $builder->add('comment');
+        $builder->add('blog');
     }
 
     /**

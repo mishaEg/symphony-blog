@@ -1,0 +1,7 @@
+blog_posts:
+  type: rest
+  resource: App\Blogger\BlogBundle\Controller\ApiController
+
+blog_comments:
+  type: rest
+  resource: App\Blogger\BlogBundle\Controller\ApiCommentsController
