@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link href="{{ asset('custom.css') }}" type="text/css" rel="stylesheet" />
+    <body>
+        <center>
+            <table>
+                <thead align="left">
+            {% for column in columns %}
+                <th>{{ column }}</th>
+            {% endfor %}
+                </thead>
+            {% for product in products|slice(i, 10) %}
+                <tr>
+                {% for key, value in product|cast_to_array %}
+                    <td>
+                        {{ value }}
+                    </td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            </table>
+            <a href="{{ path('next', { 'i': i + 10 }) }}" class="button"> > </a>
+            <a href="{{ path('next', { 'i': i - 10 }) }}" class="button"> < </a>
+        </center>
+    </body>
+</head>
+</html>

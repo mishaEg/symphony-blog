@@ -1,39 +1,12 @@
-index:
-  path: /lucky/number
-  controller: App\Controller\TestController::number
+AppBundle_index:
+    path: /
+    defaults: { _controller: "App\\Controller\\PageController::indexAction" }
+    requirements:
+        methods:  GET
 
-BloggerBlogBundle_homepage:
-  path:     /
-  defaults: { _controller: "BloggerBlogBundle:Page:index" }
-  requirements:
-    methods:  GET
-
-BloggerBlogBundle_about:
-  path:   /about
-  defaults: { _controller: "BloggerBlogBundle:Page:about" }
-  requirements:
-    methods:  GET
-
-BloggerBlogBundle_contact:
-  path:  /contact
-  defaults: { _controller: "BloggerBlogBundle:Page:contact" }
-  requirements:
-    methods:  GET|POST
-
-BloggerBlogBundle_blog_show:
-  path:  /{id}/{slug}
-  defaults: { _controller: "BloggerBlogBundle:Blog:show" }
-  requirements:
-    methods:  GET
-    id: \d+
-
-BloggerBlogBundle_comment_create:
-  path:  /comment/{blog_id}
-  defaults: { _controller: "BloggerBlogBundle:Comment:create" }
-  requirements:
-    methods:  POST
-    blog_id: \d+
-
-api:
-  type: rest
-  resource: "routing_api.yaml"
+next:
+    path: /{i}
+    defaults: { _controller: "App\\Controller\\PageController::indexAction" }
+    requirements:
+      methods:  GET
+      i: \d+
