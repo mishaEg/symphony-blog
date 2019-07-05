@@ -36,11 +36,6 @@ class ApiController extends AbstractFOSRestController  implements ClassResourceI
         $em->persist($blogPost);
         $em->flush();
 
-        $routeOptions = [
-            'id' => $blogPost->getId(),
-            '_format' => $request->get('_format'),
-        ];
-
         return new Response(
             '<html><body><center>Blog '.$blogPost->getId().' was created</center></body></html>'
         );
@@ -68,11 +63,6 @@ class ApiController extends AbstractFOSRestController  implements ClassResourceI
         $em = $this->getDoctrine()->getManager();
         $em->flush();
 
-        $routeOptions = [
-            'id' => $blogPost->getId(),
-            '_format' => $request->get('_format'),
-        ];
-
         return new Response(
             '<html><body><center>Blog '.$blogPost->getId().' was updated</center></body></html>'
         );
@@ -81,7 +71,7 @@ class ApiController extends AbstractFOSRestController  implements ClassResourceI
     public function patchAction(Request $request, int $id)
     {
         /**
-         * @var $blogPost BlogPost
+         * @var $blogPost Blog
          */
         $blogPost = $this->getBlogPostRepository()->find($id);
         if ($blogPost === null) {
@@ -96,10 +86,6 @@ class ApiController extends AbstractFOSRestController  implements ClassResourceI
         }
         $em = $this->getDoctrine()->getManager();
         $em->flush();
-        $routeOptions = [
-            'id' => $blogPost->getId(),
-            '_format' => $request->get('_format'),
-        ];
 
         return new Response(
             '<html><body><center>Blog '.$blogPost->getId().' was patched</center></body></html>'
@@ -112,10 +98,13 @@ class ApiController extends AbstractFOSRestController  implements ClassResourceI
          * @var $blogPost Blog
          */
         $blogPost = $this->getBlogPostRepository()->find($id);
+
         if ($blogPost === null) {
             return new View(null, Response::HTTP_NOT_FOUND);
         }
+
         $em = $this->getDoctrine()->getManager();
+
         $em->remove($blogPost);
         $em->flush();
 

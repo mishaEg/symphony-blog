@@ -8,6 +8,8 @@ parameters:
     blogger_blog.emails.contact_email: testmail@mailtest.ru
     blogger_blog.comments.latest_comment_limit: 10
 
+    locale: 'en'
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -33,3 +35,20 @@ services:
         factory: ["@doctrine", getRepository]
         arguments:
             - App\Blogger\BlogBundle\Entity\Blog
+
+    admin.blog_post:
+        class: App\Admin\BlogAdmin
+        arguments: [~,
+                    App\Blogger\BlogBundle\Entity\Blog,
+                    App\Controller\BlogAdminController,
+                    ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Blog posts }
+
+    admin.blog_comment:
+        class: App\Admin\CommentAdmin
+        arguments: [~, App\Blogger\BlogBundle\Entity\Comment, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Blog comments }
+
+

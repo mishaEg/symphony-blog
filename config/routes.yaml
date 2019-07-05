@@ -34,6 +34,15 @@ BloggerBlogBundle_comment_create:
     methods:  POST
     blog_id: \d+
 
+admin_area:
+  resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+  prefix: /admin
+
+_sonata_admin:
+  resource: .
+  type: sonata_admin
+  prefix: /admin
+
 api:
   type: rest
   resource: "routing_api.yaml"
